@@ -1,4 +1,4 @@
-# KryptPay Program
+# KryptPay Mobile App
 This repository contains the Mobile App for KryptPay.
 
 KryptPay is an innovative crypto wallet designed to simplify transactions at the point of sale (PoS). KryptPay offers users the ability to pay for products and services using various cryptocurrencies.
@@ -28,4 +28,4 @@ password: test123!
 
 
 # License
-KryptPay is licensed under the MIT License. Refer to the [LICENSE](https://github.com/KryptPay/kryptpay-solana-contract/blob/master/LICENSE) file for more details
+KryptPay is licensed under the MIT License. Refer to the [LICENSE](https://github.com/KryptPay/kryptpay-mobile-app/blob/master/LICENSE) file for more details
