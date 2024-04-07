@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
@@ -6,6 +8,7 @@ import 'package:krypt/data/services/firebase_firestore_service.dart';
 import 'package:krypt/data/services/shared_preference_service.dart';
 import 'package:krypt/util/exception.dart';
 import 'package:krypt/util/logging/app_logger.dart';
+import 'package:solana/solana.dart';
 
 @singleton
 class FirebaseAuthenticationService {
@@ -25,7 +28,12 @@ class FirebaseAuthenticationService {
     return firebaseAuth.authStateChanges().map((User? user) => user != null);
   }
 
-  Future<void> signUpWithEmailAndPassword({required String email, required String password}) async {
+  Future<void> signUpWithEmailAndPassword({
+    required String email,
+    required String password,
+    required Ed25519HDPublicKey publicKey,
+    required String address,
+  }) async {
     try {
       final UserCredential userCredential =
           await firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
@@ -34,14 +42,26 @@ class FirebaseAuthenticationService {
         throw KryptAppException('User with that credential does not exists');
       }
 
-      UserEntity userEntity = UserEntity(id: userCredential.user!.uid, email: email);
+      final encodedPublicKey = base64Url.encode(publicKey.bytes);
+
+      UserEntity userEntity = UserEntity(
+        id: userCredential.user!.uid,
+        email: email,
+        userPublicKeyInfo: {
+          "publicKey": encodedPublicKey,
+          "address": address,
+        },
+      );
 
       final userDocumentId = await firestoreService.save(_collectionName, userEntity.toJson());
 
+      AppLogger.debug("userDocumentId is $userDocumentId");
+
       userEntity = userEntity.copyWith(documentID: userDocumentId ?? '');
 
-      final updatedUserEntity = await updateUserInfo(userEntity);
+      AppLogger.debug("updated user info is $userEntity");
 
+      final updatedUserEntity = await updateUserInfo(userEntity);
       await sharedPref.saveUserInfo(updatedUserEntity);
     } on FirebaseAuthException catch (e) {
       throw AppFirebaseAuthException(e.code);

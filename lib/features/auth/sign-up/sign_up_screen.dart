@@ -13,14 +13,28 @@ import 'package:krypt/util/theme/colors.dart';
 import 'package:krypt/util/validation_utils.dart';
 
 @RoutePage(name: "SignUpScreenRoute")
-class SignUpScreen extends StatelessWidget {
-  SignUpScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   final _emailTextController = TextEditingController();
+
   final _passwordTextController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   final SignUpScreenCubit _signUpScreenCubit = getIt.get();
+
+  @override
+  void dispose() {
+    _emailTextController.dispose();
+    _passwordTextController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +81,6 @@ class SignUpScreen extends StatelessWidget {
                           controller: _passwordTextController,
                           hintText: "Password",
                           validator: ValidationUtils.isValidPassword,
-
                         ),
                         const SizedBox(height: 20),
                         Row(
@@ -89,6 +102,24 @@ class SignUpScreen extends StatelessWidget {
                           startIcon: AppIcons.icGoogle,
                           title: "Sign up with Google",
                           onPress: () {},
+                        ),
+                        const SizedBox(height: 20.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Already have an account?",
+                              style: context.textTheme.bodySmall?.copyWith(color: const Color(0xFF6B7180)),
+                            ),
+                            const SizedBox(width: 4.0),
+                            InkWell(
+                              onTap: () => context.router.push(const LoginScreenRoute()),
+                              child: Text(
+                                "Login",
+                                style: context.textTheme.bodySmall?.copyWith(color: const Color(0xFFD8A200)),
+                              ),
+                            ),
+                          ],
                         ),
                         const Spacer(),
                         AppButton(

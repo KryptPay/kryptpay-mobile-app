@@ -17,6 +17,7 @@ import 'package:krypt/features/send_token/send_token_screen.dart';
 import 'package:krypt/features/send_token/send_token_summary_screen.dart';
 import 'package:krypt/features/send_token/token_sent_successfully_screen.dart';
 import 'package:krypt/features/shared/enter_passcode_screen.dart';
+import 'package:krypt/util/logging/app_logger.dart';
 
 part 'app_router.gr.dart';
 
@@ -28,11 +29,9 @@ class AppRouter extends _$AppRouter {
 
   bool get hasOnboarded => sharedPref.hasFinishedOnBoarding;
 
-  bool get hasSignedUp => sharedPref.userEntity != null;
-
   String get _initialRoute {
     String initialRoute = '/onboarding-screen';
-    if (!hasOnboarded) {
+    if (!hasOnboarded && sharedPref.userEntity == null) {
       initialRoute = "/sign-up-screen";
     } else if (sharedPref.userEntity != null) {
       final UserEntity userEntity = sharedPref.userEntity!;
@@ -44,6 +43,7 @@ class AppRouter extends _$AppRouter {
         initialRoute = "/dashboard-screen-route";
       }
     }
+    AppLogger.debug("_initialRoute is $initialRoute");
     return initialRoute;
   }
 

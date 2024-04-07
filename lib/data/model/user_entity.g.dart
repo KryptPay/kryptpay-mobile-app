@@ -13,6 +13,7 @@ _$UserEntityImpl _$$UserEntityImplFromJson(Map<String, dynamic> json) =>
       passcode: json['passcode'] as String? ?? '',
       documentID: json['documentID'] as String? ?? '',
       fiatCurrency: json['fiatCurrency'] as String? ?? '',
+      userPublicKeyInfo: json['userPublicKeyInfo'] as Map<String, dynamic>,
     );
 
 Map<String, dynamic> _$$UserEntityImplToJson(_$UserEntityImpl instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$UserEntityImplToJson(_$UserEntityImpl instance) =>
       'passcode': instance.passcode,
       'documentID': instance.documentID,
       'fiatCurrency': instance.fiatCurrency,
+      'userPublicKeyInfo': instance.userPublicKeyInfo,
     };

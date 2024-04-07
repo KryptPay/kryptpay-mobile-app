@@ -25,6 +25,8 @@ mixin _$UserEntity {
   String get passcode => throw _privateConstructorUsedError;
   String get documentID => throw _privateConstructorUsedError;
   String get fiatCurrency => throw _privateConstructorUsedError;
+  Map<String, dynamic> get userPublicKeyInfo =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +45,8 @@ abstract class $UserEntityCopyWith<$Res> {
       String email,
       String passcode,
       String documentID,
-      String fiatCurrency});
+      String fiatCurrency,
+      Map<String, dynamic> userPublicKeyInfo});
 }
 
 /// @nodoc
@@ -64,6 +67,7 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
     Object? passcode = null,
     Object? documentID = null,
     Object? fiatCurrency = null,
+    Object? userPublicKeyInfo = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -86,6 +90,10 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
           ? _value.fiatCurrency
           : fiatCurrency // ignore: cast_nullable_to_non_nullable
               as String,
+      userPublicKeyInfo: null == userPublicKeyInfo
+          ? _value.userPublicKeyInfo
+          : userPublicKeyInfo // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
     ) as $Val);
   }
 }
@@ -103,7 +111,8 @@ abstract class _$$UserEntityImplCopyWith<$Res>
       String email,
       String passcode,
       String documentID,
-      String fiatCurrency});
+      String fiatCurrency,
+      Map<String, dynamic> userPublicKeyInfo});
 }
 
 /// @nodoc
@@ -122,6 +131,7 @@ class __$$UserEntityImplCopyWithImpl<$Res>
     Object? passcode = null,
     Object? documentID = null,
     Object? fiatCurrency = null,
+    Object? userPublicKeyInfo = null,
   }) {
     return _then(_$UserEntityImpl(
       id: null == id
@@ -144,6 +154,10 @@ class __$$UserEntityImplCopyWithImpl<$Res>
           ? _value.fiatCurrency
           : fiatCurrency // ignore: cast_nullable_to_non_nullable
               as String,
+      userPublicKeyInfo: null == userPublicKeyInfo
+          ? _value._userPublicKeyInfo
+          : userPublicKeyInfo // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -156,8 +170,10 @@ class _$UserEntityImpl extends _UserEntity with DiagnosticableTreeMixin {
       required this.email,
       this.passcode = '',
       this.documentID = '',
-      this.fiatCurrency = ''})
-      : super._();
+      this.fiatCurrency = '',
+      required final Map<String, dynamic> userPublicKeyInfo})
+      : _userPublicKeyInfo = userPublicKeyInfo,
+        super._();
 
   factory _$UserEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserEntityImplFromJson(json);
@@ -175,10 +191,18 @@ class _$UserEntityImpl extends _UserEntity with DiagnosticableTreeMixin {
   @override
   @JsonKey()
   final String fiatCurrency;
+  final Map<String, dynamic> _userPublicKeyInfo;
+  @override
+  Map<String, dynamic> get userPublicKeyInfo {
+    if (_userPublicKeyInfo is EqualUnmodifiableMapView)
+      return _userPublicKeyInfo;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_userPublicKeyInfo);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserEntity(id: $id, email: $email, passcode: $passcode, documentID: $documentID, fiatCurrency: $fiatCurrency)';
+    return 'UserEntity(id: $id, email: $email, passcode: $passcode, documentID: $documentID, fiatCurrency: $fiatCurrency, userPublicKeyInfo: $userPublicKeyInfo)';
   }
 
   @override
@@ -190,7 +214,8 @@ class _$UserEntityImpl extends _UserEntity with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('passcode', passcode))
       ..add(DiagnosticsProperty('documentID', documentID))
-      ..add(DiagnosticsProperty('fiatCurrency', fiatCurrency));
+      ..add(DiagnosticsProperty('fiatCurrency', fiatCurrency))
+      ..add(DiagnosticsProperty('userPublicKeyInfo', userPublicKeyInfo));
   }
 
   @override
@@ -205,13 +230,15 @@ class _$UserEntityImpl extends _UserEntity with DiagnosticableTreeMixin {
             (identical(other.documentID, documentID) ||
                 other.documentID == documentID) &&
             (identical(other.fiatCurrency, fiatCurrency) ||
-                other.fiatCurrency == fiatCurrency));
+                other.fiatCurrency == fiatCurrency) &&
+            const DeepCollectionEquality()
+                .equals(other._userPublicKeyInfo, _userPublicKeyInfo));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, email, passcode, documentID, fiatCurrency);
+  int get hashCode => Object.hash(runtimeType, id, email, passcode, documentID,
+      fiatCurrency, const DeepCollectionEquality().hash(_userPublicKeyInfo));
 
   @JsonKey(ignore: true)
   @override
@@ -229,11 +256,13 @@ class _$UserEntityImpl extends _UserEntity with DiagnosticableTreeMixin {
 
 abstract class _UserEntity extends UserEntity {
   const factory _UserEntity(
-      {required final String id,
-      required final String email,
-      final String passcode,
-      final String documentID,
-      final String fiatCurrency}) = _$UserEntityImpl;
+          {required final String id,
+          required final String email,
+          final String passcode,
+          final String documentID,
+          final String fiatCurrency,
+          required final Map<String, dynamic> userPublicKeyInfo}) =
+      _$UserEntityImpl;
   const _UserEntity._() : super._();
 
   factory _UserEntity.fromJson(Map<String, dynamic> json) =
@@ -249,6 +278,8 @@ abstract class _UserEntity extends UserEntity {
   String get documentID;
   @override
   String get fiatCurrency;
+  @override
+  Map<String, dynamic> get userPublicKeyInfo;
   @override
   @JsonKey(ignore: true)
   _$$UserEntityImplCopyWith<_$UserEntityImpl> get copyWith =>

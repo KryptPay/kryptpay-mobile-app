@@ -46,11 +46,9 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     LoginScreenRoute.name: (routeData) {
-      final args = routeData.argsAs<LoginScreenRouteArgs>(
-          orElse: () => const LoginScreenRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: LoginScreen(key: args.key),
+        child: const LoginScreen(),
       );
     },
     MarketScreenRoute.name: (routeData) {
@@ -98,11 +96,9 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     SignUpScreenRoute.name: (routeData) {
-      final args = routeData.argsAs<SignUpScreenRouteArgs>(
-          orElse: () => const SignUpScreenRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: SignUpScreen(key: args.key),
+        child: const SignUpScreen(),
       );
     },
     SwapAssetsScreenRoute.name: (routeData) {
@@ -219,31 +215,16 @@ class EnterRecipientAddressScreenRouteArgs {
 
 /// generated route for
 /// [LoginScreen]
-class LoginScreenRoute extends PageRouteInfo<LoginScreenRouteArgs> {
-  LoginScreenRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class LoginScreenRoute extends PageRouteInfo<void> {
+  const LoginScreenRoute({List<PageRouteInfo>? children})
+      : super(
           LoginScreenRoute.name,
-          args: LoginScreenRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'LoginScreenRoute';
 
-  static const PageInfo<LoginScreenRouteArgs> page =
-      PageInfo<LoginScreenRouteArgs>(name);
-}
-
-class LoginScreenRouteArgs {
-  const LoginScreenRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'LoginScreenRouteArgs{key: $key}';
-  }
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -362,31 +343,16 @@ class SetUpPassCodeAuthorizationScreenRouteArgs {
 
 /// generated route for
 /// [SignUpScreen]
-class SignUpScreenRoute extends PageRouteInfo<SignUpScreenRouteArgs> {
-  SignUpScreenRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class SignUpScreenRoute extends PageRouteInfo<void> {
+  const SignUpScreenRoute({List<PageRouteInfo>? children})
+      : super(
           SignUpScreenRoute.name,
-          args: SignUpScreenRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'SignUpScreenRoute';
 
-  static const PageInfo<SignUpScreenRouteArgs> page =
-      PageInfo<SignUpScreenRouteArgs>(name);
-}
-
-class SignUpScreenRouteArgs {
-  const SignUpScreenRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'SignUpScreenRouteArgs{key: $key}';
-  }
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

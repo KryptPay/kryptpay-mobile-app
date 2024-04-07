@@ -17,8 +17,12 @@ import 'package:krypt/data/services/firebase_authentication_service.dart'
 import 'package:krypt/data/services/firebase_firestore_service.dart' as _i5;
 import 'package:krypt/data/services/shared_preference_service.dart' as _i7;
 import 'package:krypt/data/services/solana_service.dart' as _i9;
-import 'package:krypt/di/modules/app_module.dart' as _i12;
+import 'package:krypt/di/modules/app_module.dart' as _i14;
+import 'package:krypt/features/auth/login/cubit/login_screen_cubit.dart'
+    as _i12;
 import 'package:krypt/features/auth/sign-up/cubit/sign_up_screen_cubit.dart'
+    as _i13;
+import 'package:krypt/features/dashboard/home/cubit/home_screen_cubit.dart'
     as _i11;
 import 'package:shared_preferences/shared_preferences.dart' as _i6;
 import 'package:solana/solana.dart' as _i8;
@@ -54,10 +58,18 @@ extension GetItInjectableX on _i1.GetIt {
               firestoreService: gh<_i5.FirebaseFirestoreService>(),
               sharedPref: gh<_i7.SharedPreferencesService>(),
             ));
-    gh.factory<_i11.SignUpScreenCubit>(
-        () => _i11.SignUpScreenCubit(gh<_i10.FirebaseAuthenticationService>()));
+    gh.singleton<_i11.HomeScreenCubit>(() => _i11.HomeScreenCubit(
+          gh<_i9.SolanaService>(),
+          gh<_i7.SharedPreferencesService>(),
+        ));
+    gh.factory<_i12.LoginScreenCubit>(
+        () => _i12.LoginScreenCubit(gh<_i10.FirebaseAuthenticationService>()));
+    gh.factory<_i13.SignUpScreenCubit>(() => _i13.SignUpScreenCubit(
+          gh<_i10.FirebaseAuthenticationService>(),
+          gh<_i9.SolanaService>(),
+        ));
     return this;
   }
 }
 
-class _$AppModule extends _i12.AppModule {}
+class _$AppModule extends _i14.AppModule {}
