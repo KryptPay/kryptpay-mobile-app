@@ -1,20 +1,31 @@
-# KryptPay
+# KryptPay Program
+This repository contains the Mobile App for KryptPay.
 
-A seamless cryptocurrency payment platform
+KryptPay is an innovative crypto wallet designed to simplify transactions at the point of sale (PoS). KryptPay offers users the ability to pay for products and services using various cryptocurrencies.
+In addition, users are rewarded with Krystal for every transaction made and for referring new users to the platform.
 
-# krypt
+# Program Id
+The KrytPay program is currently deployed on Devnet. You can look up the details here. [6k73LWhMtLhJLVyC3qQGa8pvDZ2GUXnLAb9n3juk8u3A](https://explorer.solana.com/address/6k73LWhMtLhJLVyC3qQGa8pvDZ2GUXnLAb9n3juk8u3A?cluster=devnet).
 
-A point of sale payment application built using the solana framework.
+You can check KryptPay solana program repo [here](https://github.com/KryptPay/kryptpay-solana-contract)
 
-## Getting Started
+# Krytal Token
+KryptPay has a reward token called Krystal for rewarding users as they transact. Details of the token can be found [here](https://explorer.solana.com/address/CUk8ssbVUtc5HA6o458Cm2pGGMWMbwm7TjGTmhmhomvD?cluster=devnet).
 
-This project is a starting point for a Flutter application.
+# Demo
+You can find the apk [here]() to test the app. You can use this test account to access the app. 
+email: test@kryptpay.com
+password: test123!
 
-A few resources to get you started if this is your first Flutter project:
+# Local Setup Guide
+- Git clone the repo 
+- Open it using any code editor of your choice
+- Connect a physical device or use an emulator if you already have Android Studio installed or an IOS simulator if you have Xcode setup.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+# Technologies Used
+- Solana Flutter SDK
+- Flutter
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+# License
+KryptPay is licensed under the MIT License. Refer to the [LICENSE](https://github.com/KryptPay/kryptpay-solana-contract/blob/master/LICENSE) file for more details
