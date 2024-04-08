@@ -47,23 +47,23 @@ class _ScanToPayState extends State<ScanToPay> {
                 bottomBar: const SizedBox.shrink(),
                 onScan: (String value) {
                   debugPrint(value);
+                  if (barcode.contains('https://')) {
+                    context.router.push(EnterAmountRoute());
+                  }
                   setState(() {
                     barcode = value;
                     log('message $barcode');
 
-                    if (barcode.contains('https://')){
-                      context.router.push(EnterAmountRoute());
-                    }
 
                   });
                 },
 
                 canPop: false,
-                validator: (value) {
-
-
-                  return value.startsWith('https://');
-                },
+                // validator: (value) {
+                //
+                //
+                //   return value.startsWith('https://');
+                // },
                 onDetect: (p0) {},
                 onDispose: () {
                   debugPrint("Barcode scanner disposed!");
