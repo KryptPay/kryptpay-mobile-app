@@ -2,6 +2,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:krypt/features/dashboard/home/home_screen.dart';
 import 'package:krypt/features/dashboard/market_place_screen.dart';
+import 'package:krypt/features/scan/scan_to_pay.dart';
 import 'package:krypt/util/app_icons.dart';
 import 'package:krypt/util/theme/colors.dart';
 
@@ -26,7 +27,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final List<Widget> _destinations = [
     const HomeScreen(),
     const MarketPlaceScreen(),
-    Container(),
+    const ScanToPay(),
     Container(),
     Container(),
   ];

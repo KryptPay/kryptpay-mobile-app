@@ -21,10 +21,32 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const DashboardScreen(),
       );
     },
+    EnterAddressRoute.name: (routeData) {
+      final args = routeData.argsAs<EnterAddressRouteArgs>(
+          orElse: () => const EnterAddressRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: EnterAddress(key: args.key),
+      );
+    },
+    EnterAmountRoute.name: (routeData) {
+      final args = routeData.argsAs<EnterAmountRouteArgs>(
+          orElse: () => const EnterAmountRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: EnterAmount(key: args.key),
+      );
+    },
     EnterAmountToSendScreenRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const EnterAmountToSendScreen(),
+      );
+    },
+    EnterPasscodeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const EnterPasscode(),
       );
     },
     EnterPasscodeScreenRoute.name: (routeData) {
@@ -67,6 +89,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ReceiveTokenScreen(),
+      );
+    },
+    ScanToPayRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ScanToPay(),
       );
     },
     SelectFiatCurrencyScreenRoute.name: (routeData) {
@@ -131,6 +159,64 @@ class DashboardScreenRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [EnterAddress]
+class EnterAddressRoute extends PageRouteInfo<EnterAddressRouteArgs> {
+  EnterAddressRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          EnterAddressRoute.name,
+          args: EnterAddressRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'EnterAddressRoute';
+
+  static const PageInfo<EnterAddressRouteArgs> page =
+      PageInfo<EnterAddressRouteArgs>(name);
+}
+
+class EnterAddressRouteArgs {
+  const EnterAddressRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'EnterAddressRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [EnterAmount]
+class EnterAmountRoute extends PageRouteInfo<EnterAmountRouteArgs> {
+  EnterAmountRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          EnterAmountRoute.name,
+          args: EnterAmountRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'EnterAmountRoute';
+
+  static const PageInfo<EnterAmountRouteArgs> page =
+      PageInfo<EnterAmountRouteArgs>(name);
+}
+
+class EnterAmountRouteArgs {
+  const EnterAmountRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'EnterAmountRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
 /// [EnterAmountToSendScreen]
 class EnterAmountToSendScreenRoute extends PageRouteInfo<void> {
   const EnterAmountToSendScreenRoute({List<PageRouteInfo>? children})
@@ -140,6 +226,20 @@ class EnterAmountToSendScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'EnterAmountToSendScreenRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [EnterPasscode]
+class EnterPasscodeRoute extends PageRouteInfo<void> {
+  const EnterPasscodeRoute({List<PageRouteInfo>? children})
+      : super(
+          EnterPasscodeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EnterPasscodeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -265,6 +365,20 @@ class ReceiveTokenScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ReceiveTokenScreenRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ScanToPay]
+class ScanToPayRoute extends PageRouteInfo<void> {
+  const ScanToPayRoute({List<PageRouteInfo>? children})
+      : super(
+          ScanToPayRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ScanToPayRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
