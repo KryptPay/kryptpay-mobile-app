@@ -34,7 +34,7 @@ class _ScanToPayState extends State<ScanToPay> {
               style: context.textTheme.bodyLarge,
             ),
             Container(
-              margin: EdgeInsets.only(top: 16),
+              margin: const EdgeInsets.only(top: 16),
               height: size.height / 1.9,
               width: size.width - 16,
               child: AiBarcodeScanner(
@@ -47,15 +47,13 @@ class _ScanToPayState extends State<ScanToPay> {
                 bottomBar: const SizedBox.shrink(),
                 onScan: (String value) {
                   debugPrint(value);
-                  if (barcode.contains('https://')) {
+                  if (barcode.contains('https:')) {
                     context.router.push(EnterAmountRoute());
                   }
-                  setState(() {
-                    barcode = value;
-                    log('message $barcode');
-
-
-                  });
+                  // setState(() {
+                  barcode = value;
+                  log('message $barcode');
+                  // });
                 },
 
                 canPop: false,
@@ -87,7 +85,7 @@ class _ScanToPayState extends State<ScanToPay> {
                   style: context.textTheme.bodySmall,
                   "Position your phone to make sure the QR code is within the camera frame."),
             ),
-            Spacer(),
+            const Spacer(),
             Align(
               alignment: Alignment.bottomCenter,
               child: Row(
