@@ -14,8 +14,10 @@ KryptPay has a reward token called Krystal for rewarding users as they transact.
 
 # Demo
 You can find the apk [here]() to test the app. You can use this test account to access the app. 
-- email: test@kryptpay.com
-- password: test123!
+- email: test@kryptpaysolution.com
+- password: Test123!
+
+- Passcode: 123456 (Transaction code)
 
 # Local Setup Guide
 - Git clone the repo 
