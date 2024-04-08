@@ -47,9 +47,14 @@ class EnterRecipientAddressScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 20.0),
-              (AppIcons.icQrCodeScanner as SvgPicture).copyWith(
-                assetName: "assets/icons/ic_qr_code.svg",
-                color: grey600,
+              InkWell(
+                onTap: (){
+                  context.router.push(const ScanToPayRoute());
+                },
+                child: (AppIcons.icQrCodeScanner as SvgPicture).copyWith(
+                  assetName: "assets/icons/ic_qr_code.svg",
+                  color: grey600,
+                ),
               ),
               const SizedBox(height: 20.0),
               Text(
